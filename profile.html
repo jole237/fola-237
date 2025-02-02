@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Profile Page</h1>
+  <div id="profile-info"></div>
+
+  <script>const profileInfo = document.getElementById('profile-info');
+
+    // Retrieve user data from local storage
+    const name = localStorage.getItem('name');
+    const email = localStorage.getItem('email');
+    const password = localStorage.getItem('password');
+    
+    // Display user data on profile page
+    profileInfo.innerHTML = `
+      <h2>Name: ${name}</h2>
+      <p>Email: ${email}</p>
+      <p>Password: ${password}</p>
+    `;
+    </script>
+</body>
+</html>
+
+
+
+

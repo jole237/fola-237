@@ -1,0 +1,139 @@
+
+   <html>
+     <head>
+       <title>joel</title>
+       <link rel="stylesheet" href="style.css">
+     </head><body>
+       <div class="back"></div>
+  <header> 
+    <div class="divv">
+      
+ <img src="me.jpg" class="logo"> 
+ <p class="logo_text">  
+   JOEL'S SITE
+   <span class="R_mark"> ® </span> 
+ </p> 
+    </div>
+ <div class="outer_nav_box"> 
+   <div class="bar_1"></div> 
+   <div class="bar_2"></div> 
+   <div class="bar_3"></div> 
+ </div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About_Us</a></li>
+    <li><a href="#">Contact_Us</a></li>
+  </ul>
+      </div>
+    </header> 
+   
+   <img src="me.jpg" id="heart">
+
+ <form id="registration-form">
+  <h1 class="reg">Registration</h1>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  
+  <label for="surname">Surname:</label>
+  <input type="text" id="surname" name="surname" required>
+  
+  <label for="phone">Phone Number:</label>
+  <input type="tel" id="phone" name="phone" required>
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email"  required>
+  
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+  <br>
+  <button type="submit" class="submit" id="submit-btn"><a href="profile.html">register</a></button>
+ </form>
+    <footer >
+        <p>&copy; 2024 Website. All Rights Reserved</p>
+    <a href="#">Terms and Conditions</a>
+    </footer>
+ 
+ <script>
+     const form = document.getElementById('registration-form');
+
+form.addEventListener('submit', (e) => {
+ e.preventDefault();
+ 
+ const name = document.getElementById('name').value;
+ const surname = document.getElementById('surname').value;
+ const phone = document.getElementById('phone').value;
+ const email = document.getElementById('email').value;
+ const password = document.getElementById('password').value;
+ 
+ // Validation
+ if (name === '' || surname === '' || phone === '' || email === '' || password === '') {
+  alert('Please fill in all fields.');
+  return;
+ }
+ 
+ if (!/^[a-zA-Z]+$/.test(name) || !/^[a-zA-Z]+$/.test(surname)) {
+  alert('Name and surname should only contain letters.');
+  return;
+ }
+ 
+ if (!/^\d{10}$/.test(phone)) {
+  alert('Invalid phone number. Please use 10 digits.');
+  return;
+ }
+ 
+ if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+  alert('Invalid email address.');
+  return;
+ }
+ 
+ if (password.length < 8) {
+  alert('Password should be at least 8 characters long.');
+  return;
+ }
+ 
+ // Submit form data
+ const formData = {
+  name,
+  surname,
+  phone,
+  email,
+  password
+ };
+ 
+ // Send data to server using fetch API or AJAX
+ fetch('/register', {
+  method: 'POST',
+  headers: {
+   'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(formData)
+ })
+ .then((response) => response.json())
+ .then((data) => console.log(data))
+ .catch((error) => console.error(error));
+});
+</script>
+
+ 
+  <script> 
+  const form = document.getElementById('registration-form');
+const submitBtn = document.getElementById('submit-btn');
+
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Store user data in local storage
+  localStorage.setItem('name', name);
+  localStorage.setItem('email', email);
+  localStorage.setItem('password', password);
+
+  // Redirect to profile page
+  window.location.href = 'profile.html';
+});
+  </script> 
+    
+</body>  
+</html>
